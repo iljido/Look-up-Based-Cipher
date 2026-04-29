@@ -16,23 +16,24 @@ This repository contains SageMath scripts for finding reduced-round collisions i
 
 Located in the [./RC](.RC)  directory:
 
-\* **`ReinforcedConcrete.sage`**: Implementation of the RC permutation. 
+\* [ReinforcedConcrete.sage](./RC/ReinforcedConcrete.sage): Implementation of the RC permutation. 
 
-\* **`genPoly.sage`**: Exports the polynomial system for reduced rounds into `.sobj` and `.txt` formats (saved in the `./RC/poly/`).
+\* [genPoly.sage](./RC/genPoly.sage): Exports the polynomial system for reduced rounds into `.sobj` and `.txt` formats (saved in the [./RC/poly/](./RC/poly/)).
 
-\* **`GenValidPair.sage`**: Computes the DDT and generates valid input/output differential pairs for target sub-S-boxes (saved in the `./RC/Data/`).
+\* [GenValidPair.sage](./RC/GenValidPair.sage): Computes the DDT and generates valid input/output differential pairs for target sub-S-boxes (saved in the [./RC/Data/](./RC/Data/)).
 
-\* **`run_magma_batch.sage`**: Iterates over valid differential trails, dynamically constructs Magma scripts,solves for the variety, and verifies the candidate collisions.
+\* [run_magma_batch.sage](./RC/run_magma_batch.sage): Iterates over valid differential trails, dynamically constructs Magma scripts,solves for the variety, and verifies the candidate collisions.
 
-\* **`run.bh`** (or `run_BLS.bh`, `run_BN.bh`, `run_ST.bh`): Bash scripts that submit parallel jobs to Magma across all S-box nodes.
+\* [run.bh](./RC/run.bh) (or `run_BLS.bh`, `run_BN.bh`, `run_ST.bh`): Bash scripts that submit parallel jobs to Magma across all S-box nodes.
 
+Results from the collision search will be stored in the [./RC/collision_result/](./RC/collision_result/) directory.
 
 
 ## Workflow
 
 ### 1. Generate Equation System
 
- Run `genPoly.sage` to create the `.sobj` polynomial equations.
+ Run `genPoly.sage` to create the `.sobj` polynomial equations. 
 
 ```bash
 cd ./RC
@@ -68,5 +69,5 @@ sage run_magma_batch.sage <cipher.mode_name> <rounds> <index>
 
 
 
-Results from the collision search will be stored in the `./RC/collision_result/` directory. 
+ 
 
