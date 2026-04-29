@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# --- Configuration ---
+CIPHER="BN254"
+ROUNDS=2
+START_SBOX=1
+END_SBOX=26
+
+# Set log directory based on the cipher name
+LOG_DIR="./logs_${CIPHER}"
+
+# Create the log directory if it doesn't exist
+mkdir -p $LOG_DIR
+
+echo "[*] Starting parallel tasks for $CIPHER (Rounds: ${ROUNDS})..."
+echo "[*] Logs will be saved in: $LOG_DIR"
+
+for (( i=$START_SBOX; i<=$END_SBOX; i++ ))
+do
+    # Define the path to the expected input difference file
+    DIFF_FILE="./Data/${CIPHER}/${CIPHER}_valid_indiff/${CIPHER}_valid_indiff_s${i}.txt"
+    
+    # Only submit the task if the differential data for this S-box exists
+    if [ -f "$DIFF_FILE" ]; then
+        echo "[+] Submitting S-box $i"
+        
+        # Define specific log file for this S-box node
+        LOG_FILE="${LOG_DIR}/magma_${CIPHER}_s${i}.log"
+        
+        # Execute the Sage script in the background using nohup
+        # Redirect all output (stdout and stderr) to the specific log file
+        # The '&' at the end ensures the process runs concurrently
+        nohup sage run_magma_batch.sage $CIPHER $ROUNDS $i > "$LOG_FILE" 2>&1 &
+        
+        # Brief pause to prevent CPU/Memory spikes during batch submission
+        sleep 0.2
+    else
+        # Skip if no valid input difference file is found
+        echo "[~] S-box $i data missing, skipping."
+    fi
+done
+
+echo "-------------------------------------------------------"
+echo "[*] All tasks submitted successfully!"
+echo "[*] Tip: Use 'tail -f ${LOG_DIR}/magma_${CIPHER}_s18.log' to monitor progress."
