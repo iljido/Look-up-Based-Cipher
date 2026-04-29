@@ -14,7 +14,7 @@ This repository contains SageMath scripts for finding reduced-round collisions i
 
 ## Source File
 
-Located in the `./RC/` directory:
+Located in the `[./RC/]()` directory:
 
 \* **`ReinforcedConcrete.sage`**: Implementation of the RC permutation. 
 
