@@ -2,7 +2,7 @@
 
 # --- Configuration ---
 CIPHER="ST"
-ROUNDS=3
+ROUNDS=2
 START_SBOX=1
 END_SBOX=24
 

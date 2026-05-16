@@ -64,6 +64,6 @@ if __name__ == "__main__":
     RC_BN  = ReinforcedConcreteRC("BN254")
     RC_ST  = ReinforcedConcreteRC("ST")
 
-    for cipher, rounds_before_bars in [ (RC_BLS,2), (RC_BN,2), (RC_ST,3)]:
+    for cipher, rounds_before_bars in [ (RC_BLS,2), (RC_BN,2), (RC_ST,2)]:
         print(f"\n--- Generate equations for {cipher.mode_name} \t: {rounds_before_bars} rounds ---\n")
         gen_rc_eqs(cipher, rounds_before_bars)

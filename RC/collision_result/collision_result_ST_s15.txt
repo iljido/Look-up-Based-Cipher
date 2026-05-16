@@ -1,0 +1,8 @@
+S-box index : 15
+Trail no.   : 387855
+m1          = 0xf6717ff498ce5aaa1cff24fba965ac5940512eb8c6c68d1c0d8a255ca039da
+m2          = 0xce6de6f1d516e31989a10cc5a21eeb8ac2c4126aeb8b736c0c2de70f91cbf1
+m1_prime    = 0x1b4d456e5e9c89326f64e9e21f5efdb9c32456eedba21de9eba6281bcce0ec6
+m2_prime    = 0x34ba8390f3322721fd7021a79090a8d04dedb920104d4d066b27d2e4f36221a
+indiff      = ['0x3f9fffffffffffffffffffffffffffffffffffed84a00000000000000000001', '0x2ab5500000000000000000000', '0x3f9fffffffffffffffffffffffffffffffffff9dd8900000000000000000001']
+Magma script: RC_ST_2r_s15_387855.magma
